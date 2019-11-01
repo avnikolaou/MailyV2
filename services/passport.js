@@ -22,18 +22,16 @@ passport.use(new googleStrategy({
         clientSecret: keys.googleClientSecret,
         callbackURL: '/auth/google/callback',
         proxy: true
-    }, (accessToken, refreshToken, profile, done) => {
-        User.findOne({ googleId : profile.id })
-            .then((existingUser) => {
-                if(existingUser) {
-                    // We have a record with the given id
-                    done(null, existingUser);
-                } else {
-                    // We DONT have a record with the given id
-                    new User ({googleId: profile.id, name: profile.name.givenName})
-                        .save()
-                        .then(user => done(null, user));
-                }
-            });
+    },
+    async (accessToken, refreshToken, profile, done) => {
+        const existingUser = await User.findOne({ googleId : profile.id });
+            if(existingUser) {
+                // We have a record with the given id
+                return done(null, existingUser);
+            } else {
+                // We DONT have a record with the given id
+               const user = await new User ({googleId: profile.id, name: profile.name.givenName}).save();
+                done(null, user);
+            }
     })
 );
