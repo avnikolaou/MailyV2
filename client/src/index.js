@@ -1,3 +1,5 @@
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 import 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -15,6 +17,8 @@ import reducers from './reducers'
 // Axios helpers for testing
 import axios from 'axios'
 window.axios = axios;
+
+library.add(fas);
 
 // Create a new instance of the redux store
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
