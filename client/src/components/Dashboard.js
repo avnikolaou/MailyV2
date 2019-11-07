@@ -6,6 +6,7 @@ import '../App.css'
 const Dashboard  = () => {
     return (
         <div>
+            DashBoard Component!
             <Link to={"/surveys/new"} className={"btn btn-info btn-circle btn-circle-xl m-1"}><FontAwesomeIcon icon={"plus"}/></Link>
         </div>
     );
