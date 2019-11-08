@@ -17,10 +17,10 @@ class Header extends Component {
                         <Payments/>
                     </li>,
                     <li key={"2"} className={"nav-item"}>
-                        <button className={"btn btn-info m-1 d-flex"} href="">Credits: {this.props.auth.credits}</button>
+                        <a className={"btn btn-info m-1 d-flex"} href="">Credits: {this.props.auth.credits}</a>
                     </li>,
                     <li key={"3"} className={"nav-item"}>
-                        <button className={"btn btn-info m-1 d-flex"} href="/api/logout">Logout ({this.props.auth.name})</button>
+                        <a className={"btn btn-info m-1 d-flex"} href="/api/logout">Logout ({this.props.auth.name})</a>
                     </li>
                 ]
         }
